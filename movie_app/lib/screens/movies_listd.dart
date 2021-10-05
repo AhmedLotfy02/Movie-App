@@ -40,7 +40,9 @@ class _MovieListState extends State<MovieList> {
                     this.visibleIcon = Icon(Icons.cancel);
                     this.searchBar = TextField(
                       textInputAction: TextInputAction.search,
-                      onSubmitted: (text) {},
+                      onSubmitted: (text) {
+                        search(text);
+                      },
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     );
                   } else {
@@ -93,6 +95,14 @@ class _MovieListState extends State<MovieList> {
 
   Future initialize() async {
     movies = await HttpHelper.getUpcoming();
+    setState(() {
+      movieCount = movies!.length;
+      movies = movies;
+    });
+  }
+
+  Future search(String text) async {
+    movies = await HttpHelper.findMovies(text);
     setState(() {
       movieCount = movies!.length;
       movies = movies;
