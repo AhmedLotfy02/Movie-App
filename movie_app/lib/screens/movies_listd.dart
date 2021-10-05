@@ -38,11 +38,13 @@ class _MovieListState extends State<MovieList> {
           decoration: BoxDecoration(
             color: Colors.redAccent[700],
           ),
-          child: Text(
-            'Drawer Header',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+          child: Center(
+            child: Text(
+              'Welcome To ReviewHat',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
             ),
           ),
         ),
