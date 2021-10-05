@@ -1,7 +1,7 @@
 class Movie {
-  late  int id;
+  late  num  id;
   late String title;
-  late double voteAverage;
+  late num  voteAverage;
   late  String releaseDate;
   late String overview;
   late String posterPath;
