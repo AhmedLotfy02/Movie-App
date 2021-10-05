@@ -12,7 +12,7 @@ class MovieList extends StatefulWidget {
 class _MovieListState extends State<MovieList> {
   late List<Movie> moviesList;
   Icon visibleIcon = Icon(Icons.search);
-  Widget searchBar = Text('Movies');
+  Widget searchBar = Text('ReviewHat');
   int? movieCount;
   List<Movie>? movies;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
@@ -30,7 +30,40 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     NetworkImage image;
     return Scaffold(
+      drawer: Drawer(
+          child: ListView(
+      padding: EdgeInsets.zero,
+      children:  <Widget>[
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.redAccent[700],
+          ),
+          child: Text(
+            'Drawer Header',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.message),
+          title: Text('Messages'),
+        ),
+        ListTile(
+          leading: Icon(Icons.account_circle),
+          title: Text('Profile'),
+        ),
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text('Settings'),
+        ),
+      ],
+    ),
+  
+      ),
       appBar: AppBar(
+        
         title: searchBar,
         actions: [
           IconButton(
@@ -47,7 +80,7 @@ class _MovieListState extends State<MovieList> {
                     );
                   } else {
                     this.visibleIcon = Icon(Icons.search);
-                    this.searchBar = Text("Movies");
+                    this.searchBar = Text("ReviewHat");
                   }
                 });
               },
@@ -63,6 +96,7 @@ class _MovieListState extends State<MovieList> {
               } else {
                 image = NetworkImage(defaultImage);
               }
+             
               return Card(
                 color: Colors.white,
                 elevation: 2.0,

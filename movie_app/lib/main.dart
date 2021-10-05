@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/movies_listd.dart';
+import 'package:movie_app/screens/start_page.dart';
 import 'controllers/httpcontroller.dart';
 import 'models/movie.dart';
 
@@ -12,7 +13,7 @@ class MyMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.orange.shade900),
+      theme: ThemeData(primaryColor: Colors.redAccent.shade700),
       home: Home(),
     );
   }
@@ -28,7 +29,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return MovieList();
+    return StartPage();
   }
 }
 
