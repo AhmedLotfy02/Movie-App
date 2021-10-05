@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/controllers/httpcontroller.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/screens/movie_details.dart';
 
 class MovieList extends StatefulWidget {
   MovieList({Key? key}) : super(key: key);
@@ -34,7 +35,19 @@ class _MovieListState extends State<MovieList> {
         actions: [
           IconButton(
               onPressed: () {
-                initialize();
+                setState(() {
+                  if (this.visibleIcon.icon == Icons.search) {
+                    this.visibleIcon = Icon(Icons.cancel);
+                    this.searchBar = TextField(
+                      textInputAction: TextInputAction.search,
+                      onSubmitted: (text) {},
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    );
+                  } else {
+                    this.visibleIcon = Icon(Icons.search);
+                    this.searchBar = Text("Movies");
+                  }
+                });
               },
               icon: visibleIcon)
         ],
@@ -52,7 +65,13 @@ class _MovieListState extends State<MovieList> {
                 color: Colors.white,
                 elevation: 2.0,
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MovieDetail(movies![position])));
+                  },
                   leading: CircleAvatar(
                     backgroundImage: image,
                   ),

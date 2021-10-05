@@ -13,7 +13,19 @@ class HttpHelper {
         'https://api.themoviedb.org/3/movie/upcoming?api_key=9373c1671ed2570e670d66aa91d0c5a6'));
 
     final jsonRepsonse = jsonDecode(result.body);
-    
+
+    return List<Movie>.from(
+        jsonRepsonse['results'].map((e) => Movie.fromJson(e)));
+  }
+
+  static Future<List<Movie>> findMovies(String title) async {
+    final String urlSearchBase =
+        'https://api.themoviedb.org/3/search/movie?api_key=9373c1671ed2570e670d66aa91d0c5a6&query=';
+    final String query=urlSearchBase+title;
+    var result = await http.get(Uri.parse( query));
+
+    final jsonRepsonse = jsonDecode(result.body);
+
     return List<Movie>.from(
         jsonRepsonse['results'].map((e) => Movie.fromJson(e)));
   }
