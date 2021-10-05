@@ -1,7 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/movies_listd.dart';
 import 'controllers/httpcontroller.dart';
 import 'models/movie.dart';
 
@@ -30,22 +28,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Movie App',
-          style: TextStyle(color: Colors.white),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () async {
-                await HttpHelper.getUpcoming();
-              },
-              icon: Icon(Icons.send))
-        ],
-      ),
-    );
+    return MovieList();
   }
 }
 
-class HttpController {}
